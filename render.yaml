@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: anti-cheat-detective
+    env: docker
+    dockerfilePath: Dockerfile
+    branch: main
+    healthCheckPath: /health
+    envVars:
+      - key: STOCKFISH_PATH
+        value: /usr/games/stockfish
+      - key: STOCKFISH_DEPTH
+        value: "18"

@@ -40,6 +40,35 @@ uv run ruff check .
 docker compose up --build
 ```
 
+## Render deployment
+
+This project can be deployed as a full container-backed web service on Render using the existing `Dockerfile`.
+
+1. Create a new Web Service on Render.
+2. Connect your GitHub repo and select the `main` branch.
+3. Use Docker as the environment and keep the default service root.
+4. Add environment variables:
+   - `STOCKFISH_PATH=/usr/games/stockfish`
+   - `STOCKFISH_DEPTH=18`
+5. Set the health check path to `/health`.
+
+Render will build the container from `Dockerfile` and serve the app at the provided URL.
+
+```yaml
+services:
+  - type: web
+    name: anti-cheat-detective
+    env: docker
+    dockerfilePath: Dockerfile
+    branch: main
+    healthCheckPath: /health
+    envVars:
+      - key: STOCKFISH_PATH
+        value: /usr/games/stockfish
+      - key: STOCKFISH_DEPTH
+        value: "18"
+```
+
 ## API example
 
 ```bash
