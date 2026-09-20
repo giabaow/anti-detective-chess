@@ -16,6 +16,10 @@ evidence.
 This first milestone does not train a classifier and does not make cheating
 accusations.
 
+## Demo
+Find the demo here:
+https://anti-detective-chess.onrender.com
+
 ## Local setup
 
 Requirements: Python 3.11+, `uv`, and a Stockfish binary.
